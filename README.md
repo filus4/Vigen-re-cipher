@@ -1,2 +1,2 @@
-# Vigen-re-cipher
+# Vigenère cipher
 FoCP |  Vigenère cipher | Project
