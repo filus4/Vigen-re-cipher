@@ -4,15 +4,6 @@
 #include <vector>
 using namespace std;
 
-
-// Function to make whole sentence uppercase
-string make_it_upper(string sentence) {
-    for (auto & c: sentence) {
-        c = toupper(c);
-    }
-    return sentence;
-}
-
 void print_number(vector<int> const &a) {
    cout << "The vector elements are: ";
 
@@ -32,13 +23,6 @@ void print_charakter(vector<int> const &a) {
 
 int main() {
     
-//  char x;
-//  cin >> x;
-    
-//   int ascii = (int)x;
-
-//   cout << "In ascii table letter [" << x << "] " << "is equal to: " << ascii;
-
     ifstream input, key;
     ofstream output;
 
@@ -71,12 +55,12 @@ int main() {
     int current_char_in_ascii;
     int new_position_in_alphabet;
 
-    while (!input.eof()) {
-        char current_char;
-        input >> noskipws >> current_char;
+    input >> current_char;
 
-        output << current_char;
-        
+    while (!input.eof()) {
+
+        //output << current_char;
+
         if (isalpha(current_char)) {
             current_char_in_ascii = (int)toupper(current_char);
 
@@ -85,12 +69,12 @@ int main() {
             new_position_in_alphabet = ((current_char_in_ascii + ascii_vkey[shift_index]) - 65 ) % 26;
             char charakter = char(new_position_in_alphabet + 65);
 
-           // output << charakter;
-
+            output << charakter;           
             current_index += 1;
         } else if (!isalpha(current_char)) {
-            current_index += 1;
-        } 
+            output << current_char;
+        }
+        input >> current_char;   
     }
 
     current_index = 0;
