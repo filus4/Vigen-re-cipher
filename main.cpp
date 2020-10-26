@@ -12,18 +12,8 @@ void print_number(vector<int> const &a) {
    }
 }
 
-void print_charakter(vector<int> const &a) {
-   cout << "The vector elements are: ";
-
-   for (int i=0; i < a.size(); i++) {
-        cout << '[' << a.at(i) << ']';
-   }
-}
-
-
-int main() {
-    ifstream input, key;
-    ofstream output;
+vector<int> get_ascii_key(string file_name) {
+    ifstream key;
 
     vector<char> vkey;
     vector<int> ascii_vkey;
@@ -39,11 +29,19 @@ int main() {
 
     key.close();
 
-    int key_length = vkey.size();
-
     for (int i=0; i < vkey.size(); i++) {
         ascii_vkey.push_back((int)vkey[i] - 65);
     }
+    return ascii_vkey;
+}
+
+int main() {
+    ifstream input;
+    ofstream output;
+
+    vector<int> ascii_vkey = get_ascii_key("key.txt");
+
+    int key_length = ascii_vkey.size();
 
     input.open("input.txt");
     output.open("output.txt");
