@@ -52,12 +52,7 @@ int main() {
     int current_char_in_ascii;
     int new_position_in_alphabet;
 
-    input >> current_char;
-
-    while (!input.eof()) {
-        char current_char;
-        input >> noskipws >> current_char;
-        
+    while (input >> noskipws >> current_char) {       
         if (isalpha(current_char)) {
             current_char_in_ascii = (int)toupper(current_char);
 
@@ -69,7 +64,7 @@ int main() {
             output << shifted_char;
 
             current_index += 1;
-        } else {
+        } else if (!isalpha(current_char)) {
             output << current_char;
         } 
     }
