@@ -22,7 +22,10 @@ void print_charakter(vector<int> const &a) {
 
 
 int main() {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 96628d3... Small fixes
     ifstream input, key;
     ofstream output;
 
@@ -58,23 +61,23 @@ int main() {
     input >> current_char;
 
     while (!input.eof()) {
-
-        //output << current_char;
-
+        char current_char;
+        input >> noskipws >> current_char;
+        
         if (isalpha(current_char)) {
             current_char_in_ascii = (int)toupper(current_char);
 
             int shift_index = current_index % key_length;
 
             new_position_in_alphabet = ((current_char_in_ascii + ascii_vkey[shift_index]) - 65 ) % 26;
-            char charakter = char(new_position_in_alphabet + 65);
+            char shifted_char = char(new_position_in_alphabet + 65);
 
-            output << charakter;           
+            output << shifted_char;
+
             current_index += 1;
-        } else if (!isalpha(current_char)) {
+        } else {
             output << current_char;
-        }
-        input >> current_char;   
+        } 
     }
 
     current_index = 0;
