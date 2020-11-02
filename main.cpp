@@ -100,6 +100,12 @@ void decode_with_key(string input_file_name, string key_file_name, string output
 }
 
 int main(int argc, char* argv[]) {
+
+    bool flag;
+
+    for (int i = 0; i < argc; i++) {
+        
+    }
     
     encode("encode_input.txt", "key.txt", "encode_output.txt");
 
