@@ -4,7 +4,6 @@
 #include <vector>
 using namespace std;
 
-
 vector<int> get_ascii_key(string key_file_name) {
     ifstream key;
 
@@ -114,15 +113,15 @@ int main(int argc, char* argv[]) {
             decrypt = true;
         } else if (argv[i] == "-k") {
             if (i + 1 < argc) {
-                key_file = argv[i++];
+                key_file = argv[++i];
             }
         } else if (argv[i] == "-i") {
             if (i + 1 < argc) {
-                input_file = argv[i++];  // i++  ---> i = i+1
+                input_file = argv[++i];
             }
         } else if (argv[i] == "-o") {
             if (i + 1 < argc) {
-                output_file = argv[i++];
+                output_file = argv[++i];
             }
         }
 
@@ -132,9 +131,5 @@ int main(int argc, char* argv[]) {
         decode_with_key(input_file, key_file, output_file);
     }
     
- //   encode(input_file, key_file, output_file);
-
- //   decode_with_key(input_file, key_file, output_file);
-
     return 0;
 }
