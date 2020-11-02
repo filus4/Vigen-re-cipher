@@ -101,15 +101,40 @@ void decode_with_key(string input_file_name, string key_file_name, string output
 
 int main(int argc, char* argv[]) {
 
-    bool flag;
+    string input_file;
+    string key_file;
+    string output_file;
+    bool encrypt, decrypt;
 
-    for (int i = 0; i < argc; i++) {
-        
+
+    for (int i = 1; i < argc; i++) {
+        if (argv[i] == "--en") {
+            encrypt = true;
+        } else if (argv[i] == "--de") {
+            decrypt = true;
+        } else if (argv[i] == "-k") {
+            if (i + 1 < argc) {
+                key_file = argv[i++];
+            }
+        } else if (argv[i] == "-i") {
+            if (i + 1 < argc) {
+                input_file = argv[i++];  // i++  ---> i = i+1
+            }
+        } else if (argv[i] == "-o") {
+            if (i + 1 < argc) {
+                output_file = argv[i++];
+            }
+        }
+
+    if (encrypt) {
+        encode(input_file, key_file, output_file);
+    } else if (decrypt) {
+        decode_with_key(input_file, key_file, output_file);
     }
     
-    encode("encode_input.txt", "key.txt", "encode_output.txt");
+ //   encode(input_file, key_file, output_file);
 
-    decode_with_key("encode_output.txt", "key.txt", "decode_output.txt");
+ //   decode_with_key(input_file, key_file, output_file);
 
     return 0;
 }
