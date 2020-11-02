@@ -4,21 +4,14 @@
 #include <vector>
 using namespace std;
 
-void print_number(vector<int> const &a) {
-   cout << "The vector elements are: ";
 
-   for (int i=0; i < a.size(); i++) {
-        cout << '[' << a.at(i) << ']';
-   }
-}
-
-vector<int> get_ascii_key(string file_name) {
+vector<int> get_ascii_key(string key_file_name) {
     ifstream key;
 
     vector<char> vkey;
     vector<int> ascii_vkey;
 
-    key.open("key.txt");
+    key.open(key_file_name);
     char vkey_data;
     key >> vkey_data;
     
@@ -35,16 +28,15 @@ vector<int> get_ascii_key(string file_name) {
     return ascii_vkey;
 }
 
-void encode() {
+void encode(string input_file_name, string key_file_name, string output_file_name) {
     ifstream input;
     ofstream output;
 
-    vector<int> ascii_vkey = get_ascii_key("key.txt");
-
+    vector<int> ascii_vkey = get_ascii_key(key_file_name);
     int key_length = ascii_vkey.size();
 
-    input.open("encode_input.txt");
-    output.open("encode_output.txt");
+    input.open(input_file_name);
+    output.open(output_file_name);
 
     char current_char;
     int current_index = 0;
@@ -71,15 +63,15 @@ void encode() {
     output.close();
 }
 
-void decode_with_key(){
+void decode_with_key(string input_file_name, string key_file_name, string output_file_name){
     ifstream input;
     ofstream output;
 
-    vector<int> ascii_vkey = get_ascii_key("key.txt");
+    vector<int> ascii_vkey = get_ascii_key(key_file_name);
     int key_length = ascii_vkey.size();
 
-    input.open("encode_output.txt");
-    output.open("decode_output.txt");
+    input.open(input_file_name);
+    output.open(output_file_name);
 
     char current_char;
     int current_index = 0;
@@ -107,11 +99,11 @@ void decode_with_key(){
     output.close();
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     
-    encode();
+    encode("encode_input.txt", "key.txt", "encode_output.txt");
 
-    decode_with_key();
+    decode_with_key("encode_output.txt", "key.txt", "decode_output.txt");
 
     return 0;
 }
