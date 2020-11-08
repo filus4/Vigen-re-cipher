@@ -6,10 +6,6 @@
 #include "argsresolver.h"
 using namespace std;
 
-// TODO:
-// 2 - describe all functions in doxygen style
-// 3 - make project report
-
 int main(int argc, char* argv[]) {
     ArgsResolver argsRes(argc, argv);
  
