@@ -10,10 +10,14 @@ int main(int argc, char* argv[]) {
     ArgsResolver argsRes(argc, argv);
  
     if ((argsRes.decrypt && argsRes.encrypt) || (!argsRes.decrypt && !argsRes.encrypt)) {  // Checks if decrypt and encrypt aren't the same value 
-        cerr << "Usage: ./main --en -i input -k key -o output <-- for encryption\n       ./main --de -i input -k key -o output <-- for decryption ";
+        cerr << "Incorrect parameters!\n";
+        cerr << "Usage: ./main --en -i input -k key -o output <-- for encryption\n";
+        cerr << "       ./main --de -i input -k key -o output <-- for decryption";
         return 1;
     } else if (!exist(argsRes.input_file) || !exist(argsRes.key_file)) {                   // checks if input file and key file exist
-        cerr << "Usage: ./main --en -i input -k key -o output <-- for encryption\n       ./main --de -i input -k key -o output  <-- for decryption ";
+        cerr << "Incorrect parameters!\n";
+        cerr << "Usage: ./main --en -i input -k key -o output <-- for encryption\n";
+        cerr << "       ./main --de -i input -k key -o output <-- for decryption";
         return 1;
     }
  

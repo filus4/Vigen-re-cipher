@@ -5,7 +5,7 @@
 
 #include <string>
 
- /** This class is used to get and store user input as options and arguments from console. */
+ /** This class is used to get and store user input as options and arguments from command line. */
 class ArgsResolver {
     public:
         std::string input_file = "";        ///< variable for storing input file
